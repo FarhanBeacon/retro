@@ -11,9 +11,88 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- CSS file link -->
     <link rel="stylesheet" href="styles/style.css">
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
 </head>
 <body>
-    <h1 class="text-6xl text-center">Retro</h1>
+    <header>
+        <!-- Navigation Section -->
+        <nav class="navbar w-[85%] mx-auto my-8 p-0 m-0">
+            <div class="navbar-start">
+                <a class="btn btn-ghost text-4xl font-extrabold text-[#12132D]">ReTro</a>
+            </div>
+            <div class="navbar-end gap-3">
+                <ul class="hidden lg:flex lg:gap-3">
+                    <li class="rounded-full flex justify-center items-center border-2 border-[#0307121a] h-[54px] w-[54px] text-2xl bg-[#12132d08] tooltip" data-tip="Home"><a><i class="fa-light fa-house"></i></a></li>
+                    <li class="rounded-full flex justify-center items-center border-2 border-[#0307121a] h-[54px] w-[54px] text-2xl bg-[#12132d08] tooltip" data-tip="Edit"><a><i class="fa-light fa-pencil"></i></a></li>
+                    <li class="rounded-full flex justify-center items-center border-2 border-[#0307121a] h-[54px] w-[54px] text-2xl bg-[#12132d08] tooltip" data-tip="Add"><a><i class="fa-light fa-user-plus"></i></a></li>
+                    <li class="rounded-full flex justify-center items-center border-2 border-[#0307121a] h-[54px] w-[54px] text-2xl bg-[#12132d08] tooltip" data-tip="Saved"><a><i class="fa-light fa-flag"></i></a></li>
+                </ul>
+                <button class="btn text-xl font-semibold rounded-[50px] px-6 bg-[#797DFC] text-white ms-1">Sign In</button>
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul
+                        tabindex="0"
+                        class="dropdown-content">
+                        <li class="rounded-full flex justify-center items-center border-2 border-[#0307121a] h-[54px] w-[54px] text-2xl bg-[#12132d08]"><a><i class="fa-light fa-house"></i></a></li>
+                        <li class="rounded-full flex justify-center items-center border-2 border-[#0307121a] h-[54px] w-[54px] text-2xl bg-[#12132d08]"><a><i class="fa-light fa-pencil"></i></a></li>
+                        <li class="rounded-full flex justify-center items-center border-2 border-[#0307121a] h-[54px] w-[54px] text-2xl bg-[#12132d08]"><a><i class="fa-light fa-user-plus"></i></a></li>
+                        <li class="rounded-full flex justify-center items-center border-2 border-[#0307121a] h-[54px] w-[54px] text-2xl bg-[#12132d08]"><a><i class="fa-light fa-flag"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Banner Section -->
+        <section class="flex justify-between flex-col lg:flex-row gap-6 w-[83%] mx-auto p-4 lg:p-[100px] rounded-[32px]" style="background-image: url(images/bgbanner.png);background-color: #12132D; background-position: bottom; background-size: cover;">
+            <div class="space-y-4">
+                <h1 class="text-4xl lg:text-6xl text-white font-bold">Welcome to the <br> <span class=" text-transparent bg-gradient-to-r from-[#6f74ff] to-[#22257e] bg-clip-text">ReTro</span> Forum</h1>
+                <p class="lg:text-xl text-white">
+                    Share your favorite opinion and win and wp <br class="hidden lg:inline"> forum coffee mug!
+                </p>
+                <div class="relative bg-white w-[85%] rounded-[50px]">
+                    <input class="w-full py-[18px] px-[20px] rounded-[50px]" type="text" name="search" id="searchField" placeholder="Search here anything">
+                    <button class="btn absolute top-[11%] right-[2%] bg-[#797DFC] text-xl text-white font-semibold lg:px-[27px] lg:py-[5px] rounded-[46px]">Search</button>
+                </div>
+            </div>
+            <div class="bg-white p-8 lg:p-12 rounded-[32px]">
+                <table>
+                    <tbody class="text-xl lg:text-2xl">
+                        <tr>
+                            <td>Registered Users</td>
+                            <td class="ps-4">01</td>
+                        </tr>
+                        <tr>
+                            <td>Forum</td>
+                            <td class="ps-4">03</td>
+                        </tr>
+                        <tr>
+                            <td>Topics</td>
+                            <td class="ps-4">05</td>
+                        </tr>
+                        <tr>
+                            <td>Replies</td>
+                            <td class="ps-4">09</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+        </section>
+    </header>
+    <main></main>
+    <footer></footer>
 
     <script src="js/index.js"></script>
 </body>
