@@ -9,10 +9,18 @@
     <!-- Tailwind Link -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- CSS file link -->
-    <link rel="stylesheet" href="styles/style.css">
     <!-- Font Awesome Link -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <!-- Mulish Google Font Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Mulish", sans-serif;
+        };
+    </style>
 </head>
 <body>
     <header>
@@ -91,7 +99,25 @@
             </div> 
         </section>
     </header>
-    <main></main>
+    <main>
+        <!-- Let’s Discuss Section -->
+        <section class="w-[85%] mx-auto my-16 p-0 m-0">
+            <div class="text-center my-8">
+                <h3 class="text-[40px] font-extrabold">Let’s Discuss</h3>
+                <p class="text-xl font-semibold text-[#12132d99]">Yes, you can run unit tests and view the results directly within the app. The <br> integrated testing features allow for a streamlined .</p>
+            </div>
+            <div class="flex justify-between flex-col lg:flex-row gap-8">
+                <div id="discussContentField" class="w-full lg:w-3/5"></div>
+                <div id="discussTitleField" class="w-full lg:w-2/6 h-fit p-6 rounded-[24px] bg-[#F3F3F5]">
+                    <div class="flex justify-between items-center gap-16">
+                        <h3 class="text-2xl font-bold">Title</h3>
+                        <p><i id="checkMark" class="fa-solid fa-check"></i> Mark as read (<span id="commentCounter">0</span>)</p>
+                    </div>
+                    <hr class="border-t-2 my-3">
+                </div>
+            </div>
+        </section>
+    </main>
     <footer></footer>
 
     <script src="js/index.js"></script>
