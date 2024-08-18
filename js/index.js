@@ -16,7 +16,6 @@ const contentDataHandler = (posts) => {
     posts.forEach(post => {
         const discussContent = document.createElement('div');
         discussContent.classList = `flex justify-center gap-7 bg-[#F3F3F5] rounded-[24px] p-4 lg:p-[40px] mb-6 shadow-[0_0_5px_rgba(0,0,0,0.25)]`;
-        // console.log(post);
         const activeStatus = () => {
             if(post.isActive){
                 return 'success';
@@ -106,12 +105,11 @@ const loadLatestData = async () => {
 }
 
 const latestPostsHandler = (posts) => {
-    // console.log(posts);
     const latestPostsContainer = document.getElementById('latestPostsContainer');
 
     posts.forEach(post => {
         const div = document.createElement('div');
-        div.classList = 'card bg-base-100 w-96 shadow-[0_0_5px_rgba(0,0,0,0.25)]';
+        div.classList = 'card bg-base-100 lg:w-96 shadow-[0_0_5px_rgba(0,0,0,0.25)]';
         div.innerHTML = `
         <figure class="px-6 pt-6">
             <img
