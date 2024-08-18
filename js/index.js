@@ -1,18 +1,22 @@
-const loadContentData = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts')
+const loadContentData = async (category) => {
+    let value = '';
+    if(!category == ''){
+        value = `?category=${category}`;
+    }
+
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts${value}`);
     const data = await res.json();
     const posts = data.posts;
     contentDataHandler(posts);
 }
 
 const contentDataHandler = (posts) => {
-    // console.log(posts);
     const discussContentField = document.getElementById('discussContentField');
-
+    discussContentField.textContent = '';
     posts.forEach(post => {
         const discussContent = document.createElement('div');
-        discussContent.classList = `flex justify-center gap-7 bg-[#F3F3F5] rounded-[24px] p-[40px] mb-6`;
-        console.log(post);
+        discussContent.classList = `flex justify-center gap-7 bg-[#F3F3F5] rounded-[24px] p-4 lg:p-[40px] mb-6 shadow-[0_0_5px_rgba(0,0,0,0.25)]`;
+        // console.log(post);
         const activeStatus = () => {
             if(post.isActive){
                 return 'success';
@@ -22,7 +26,7 @@ const contentDataHandler = (posts) => {
         }
 
         discussContent.innerHTML = `
-        <div class="relative h-[72px] w-[72px] bg-[#FFF] rounded-2xl space-y-4">
+        <div class="relative h-fit w-[72px] bg-[#FFF] rounded-2xl space-y-4">
             <img class="rounded-2xl" src="${post.image}" alt="ProfilePicture">
             <div class="badge badge-${activeStatus()} badge-sm absolute -top-5 -right-1"></div>
         </div>
@@ -37,7 +41,7 @@ const contentDataHandler = (posts) => {
             </div>
             <hr class="border-t-4 border-dotted border-gray-500 my-4">
             <div class="flex justify-between">
-                <div class="flex gap-8">
+                <div class="flex gap-3 lg:gap-8">
                     <p><i class="fa-regular fa-comment"></i> ${post.comment_count}</p>
                     <p><i class="fa-regular fa-eye"></i> ${post.view_count}</p>
                     <p><i class="fa-regular fa-clock"></i> ${post.posted_time}</p>
@@ -49,6 +53,7 @@ const contentDataHandler = (posts) => {
         </div>
         `;
         discussContentField.appendChild(discussContent);
+        loaderHandler(false);
     });
 }
 
@@ -72,3 +77,64 @@ const titleCommentHandler = (postTitle, viewCount) => {
 }
 
 loadContentData();
+
+// For Search Field
+document.getElementById('searchBtn').addEventListener('click', function(){
+    loaderHandler(true);
+    const searchField = document.getElementById('searchField');
+    const searchBtnValue = searchField.value;
+    console.log(searchBtnValue);
+    loadContentData(searchBtnValue);
+});
+
+// Loader Handler
+const loaderHandler = (isLoading) => {
+    const loader = document.getElementById('loader');
+    if(isLoading){
+        loader.classList.remove('hidden');
+    } else {
+        loader.classList.add('hidden');
+    }
+}
+
+
+// Latest Posts Section
+const loadLatestData = async () => {
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts')
+    const data = await res.json();
+    latestPostsHandler(data);
+}
+
+const latestPostsHandler = (posts) => {
+    // console.log(posts);
+    const latestPostsContainer = document.getElementById('latestPostsContainer');
+
+    posts.forEach(post => {
+        const div = document.createElement('div');
+        div.classList = 'card bg-base-100 w-96 shadow-[0_0_5px_rgba(0,0,0,0.25)]';
+        div.innerHTML = `
+        <figure class="px-6 pt-6">
+            <img
+            src="${post.cover_image}" alt="Content Image"
+            class="rounded-xl" />
+        </figure>
+        <div class="card-body">
+        <p><i class="fa-regular fa-calendar"></i> ${post.author.posted_date}</p>
+        <h2 class="card-title">${post.title}</h2>
+            <p>${post.description}</p>
+            <div class="card-actions flex gap-5">
+                <div class="h-fit w-[44px] rounded-[44px]">
+                    <img class="rounded-[44px]" src="${post.profile_image}" alt="Profile Picture">
+                </div>
+                <div>
+                    <h3 class="text-base">${post.author.name}</h3>
+                    <p>${post.author.designation? post.author.designation : 'Unknown'}</p>
+                </div>
+            </div>
+        </div>
+        `;
+        latestPostsContainer.appendChild(div);
+    });
+}
+
+loadLatestData();
